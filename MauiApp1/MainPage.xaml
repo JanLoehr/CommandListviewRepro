@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             xmlns:local="clr-namespace:MauiApp1"
+             BackgroundColor="{DynamicResource SecondaryColor}"
+             x:DataType="local:MainPageViewModel">
+
+    <StackLayout VerticalOptions="Center">
+        <ListView ItemsSource="{Binding ListItems}" SelectionMode="None" VerticalOptions="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:DataType="local:ListItemViewModel">
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Click" Command="{Binding ActionClickedCommand}" />
+                        </ViewCell.ContextActions>
+
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label >Clicks:</Label>
+                                <Label Text="{Binding ClicksReceived}" />
+                            </StackLayout>
+                            <Button Text="{Binding ButtonLabel}" Command="{Binding ActionClickedCommand}" ></Button>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
